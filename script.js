@@ -5,6 +5,7 @@ document.getElementById('btn').addEventListener('click', () => {
   const promise1 = new Promise((resolve) => {
     setTimeout(() => {
       resolve(inputNumber);
+		document.getElementById('ip').value = ""
     }, 2000);
   });
 
