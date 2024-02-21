@@ -45,5 +45,7 @@ document.getElementById('btn').addEventListener('click', () => {
     });
   }).then((number) => {
     document.getElementById('output').textContent = `Final Result: ${number}`;
+  }).catch((err)=>{
+	  document.getElementById('output').textContent = `Something went wrong`;
   });
 });
