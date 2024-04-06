@@ -1,52 +1,58 @@
-//your JS code here. If required.
-document.getElementById('btn').addEventListener('click', () => {
-  const inputNumber = document.getElementById('ip').value;
+const input = document.getElementById("ip");
+const output = document.getElementById("output");
+const btn = document.getElementById("btn");
 
-  const promise1 = new Promise((resolve) => {
+// Add event listener to the button
+btn.addEventListener("click", () => {
+  // Parse the input value as a number
+  const initialValue = parseInt(input.value);
+
+  // Create a promise that resolves after 2 seconds with the initial value
+  const initialPromise = new Promise(resolve => {
     setTimeout(() => {
-      resolve(inputNumber);
-		document.getElementById('ip').value = ""
+      resolve(initialValue);
     }, 2000);
   });
 
-  promise1.then((number) => {
-    document.getElementById('output').textContent = `Result: ${number}`;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(number);
-      }, 2000);
+  // Chain promises to perform operations
+  initialPromise
+    .then(number => {
+      output.textContent = Result: ${number};
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(number * 2);
+        }, 1000);
+      });
+    })
+    .then(number => {
+      output.textContent = Result: ${number};
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(number - 3);
+        }, 1000);
+      });
+    })
+    .then(number => {
+      output.textContent = Result: ${number};
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(number / 2);
+        }, 1000);
+      });
+    })
+    .then(number => {
+      output.textContent = Result: ${number};
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(number + 10);
+        }, 1000);
+      });
+    })
+    .then(finalResult => {
+      output.textContent = Final Result: ${finalResult};
+    })
+    .catch(error => {
+      // Handle errors if any
+      console.error("An error occurred:", error);
     });
-  }).then((number) => {
-    document.getElementById('output').textContent = `Result: ${number}`;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(number * 2);
-      }, 1000);
-    });
-  }).then((number) => {
-    document.getElementById('output').textContent = `Result: ${number}`;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(number - 3);
-      }, 1000);
-    });
-  }).then((number) => {
-    document.getElementById('output').textContent = `Result: ${number}`;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(number / 2);
-      }, 1000);
-    });
-  }).then((number) => {
-    document.getElementById('output').textContent = `Result: ${number}`;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(number + 10);
-      }, 1000);
-    });
-  }).then((number) => {
-    document.getElementById('output').textContent = `Final Result: ${number}`;
-  }).catch((err)=>{
-	  document.getElementById('output').textContent = `Something went wrong`;
-  });
 });
